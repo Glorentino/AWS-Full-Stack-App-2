@@ -70,12 +70,6 @@ const App = ({ signOut }) => {
 
   return (
     <View className="App">
-      <View
-          name="image"
-          as="input"
-          type="file"
-          style={{ alignSelf: "end" }}
-        />
       <Heading level={1}>My Notes App</Heading>
       <View as="form" margin="3rem 0" onSubmit={createNote}>
         <Flex direction="row" justifyContent="center">
@@ -94,7 +88,12 @@ const App = ({ signOut }) => {
             labelHidden
             variation="quiet"
             required
-          />
+          /><View
+          name="image"
+          as="input"
+          type="file"
+          style={{ alignSelf: "end" }}
+        />
           <Button type="submit" variation="primary">
             Create Note
           </Button>
