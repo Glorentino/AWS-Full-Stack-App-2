@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "awsfullstackapp26341a848": {}
+      },
+      "api": {
+        "awsfullstackapp2": {}
+      },
+      "storage": {
+        "imagestorage": {}
       }
     }
   }
