@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import "@aws-amplify/ui-react/styles.css";
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
 import { API, Storage } from 'aws-amplify';
 import {
   Button,
@@ -14,14 +11,14 @@ import {
   View,
   withAuthenticator,
 } from '@aws-amplify/ui-react';
-import { listNotes } from "./pages/graphql/queries";
+import { listNotes } from "./graphql/queries";
 import {
   createNote as createNoteMutation,
   deleteNote as deleteNoteMutation,
-} from "./pages/graphql/mutations";
-import Hero from "./pages/routes";
+} from "./graphql/mutations";
 
-const App = ({ signOut }) => {
+
+const Note = ({ signOut }) => {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
@@ -72,36 +69,66 @@ const App = ({ signOut }) => {
   }
 
   return (
-    <View >
+    <View className="App">
+      <Heading level={1}>My Notes App</Heading>
+      <View as="form" margin="3rem 0" onSubmit={createNote}>
+        <Flex direction="row" justifyContent="center">
+          <TextField
+            name="name"
+            placeholder="Note Name"
+            label="Note Name"
+            labelHidden
+            variation="quiet"
+            required
+          />
+          <TextField
+            name="description"
+            placeholder="Note Description"
+            label="Note Description"
+            labelHidden
+            variation="quiet"
+            required
+          /><View
+          name="image"
+          as="input"
+          type="file"
+          style={{ alignSelf: "end" }}
+        />
+          <Button type="submit" variation="primary">
+            Create Note
+          </Button>
+        </Flex>
+      </View>
+      <Heading level={2}>Current Notes</Heading>
+      <View margin="3rem 0">
+      {notes.map((note) => (
+  <Flex
+    key={note.id || note.name}
+    direction="row"
+    justifyContent="center"
+    alignItems="center"
+  >
+    <Text as="strong" fontWeight={700}>
+      {note.name}
+    </Text>
+    <Text as="span">{note.description}</Text>
+    {note.image && (
+      <Image
+        src={note.image}
+        alt={`visual aid for ${notes.name}`}
+        style={{ width: 400 }}
+      />
+    )}
+    <Button variation="link" onClick={() => deleteNote(note)}>
+      Delete note
+    </Button>
+  </Flex>
+))}
+      </View>
 
-        <body>
-          <Hero/>
-          <main>
 
-
-        </main><Button onClick={signOut}>Sign Out</Button>
-        <footer>
-            
-            </footer>
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">
-         {/*<img
-              alt=""
-              src="/logo.svg"
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-            />*/}
-            <p>&copy; Contuso 2022</p>
-          </Navbar.Brand>
-        </Container>
-      </Navbar>
-        </body>
-        
     </View>
     
   );
 };
-
-export default withAuthenticator(App);
+export default withAuthenticator(Note);
