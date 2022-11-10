@@ -9,9 +9,9 @@ const Hero = () => {
         <section >
 
                 <Router>
-                < Navbar /> 
+                < Navbar/> 
                     <Routes>
-                        <Route  exact path='/home' element={<Home/>} />
+                        <Route  exact path='/' element={<Home/>} />
                         <Route  exact path='/notes' element={<Note/>} />
                         <Route  exact path='/market' element={<Market/>} />
                     </Routes>
