@@ -1,7 +1,9 @@
 import { useState, useContext } from 'react';
-import {Button, Container, Navbar, Modal, ModalBody} from 'react-bootstrap';
+import { Image, Button,  Modal} from 'react-bootstrap';
 import { CartContext } from '../../CarContext';
 import CartProduct from './CartProduct';
+import cartIcon from "../images/cartIcon.png";
+
 function NavbarComponent() {
     const cart = useContext(CartContext);
     const [show, setShow] = useState(false);
@@ -12,7 +14,9 @@ function NavbarComponent() {
 
     return (
         <>
-        <Button onClick={handleShow}> Cart ({productsCount} Items)</Button>
+        <Button onClick={handleShow}>  Cart <Image src={cartIcon} 
+        width={20}
+        height={20}/> ({productsCount} Items)</Button>
                 <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Shopping Cart</Modal.Title>
@@ -32,7 +36,7 @@ function NavbarComponent() {
                             </Button>
                         </>   
                     :
-                    <h1>ModalBody</h1>
+                    <h1>Empty</h1>
                 }
                     
 

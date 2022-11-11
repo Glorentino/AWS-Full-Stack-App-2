@@ -18,6 +18,24 @@ const productArray = [
         title: "M4 Base",
         price: 59999.99  ,
         image: m4
+      },
+      {
+      id:"4",
+      title: "M4",
+      price: 99999.99 ,
+      image: m4
+    },
+    {
+        id:"5",
+        title: "M3",
+        price: 129999.99,  
+        image: m3
+      },
+      {
+        id:"6",
+        title: "M4 Base",
+        price: 59999.99  ,
+        image: m4
       }
 ];
 

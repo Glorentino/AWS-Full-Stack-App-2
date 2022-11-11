@@ -7,9 +7,12 @@ import "./custom.css";
 import Carousel from 'react-bootstrap/Carousel';
 import m3 from './images/m3.png';
 import m4 from './images/m3.png';
-import m42 from './images/m42.webp';
+import typeR from './images/HondatypeR2.png';
 import bmwLogo from './images/BMW.png';
-import NavbarComponent from "./components/NavBar1";
+import hondaLogo from './images/honda-logo1.jpg';
+import toyotaLogo from './images/toyota-logo1.jpg'
+import porscheLogo from './images/porsche-logo.png'
+
 const Home = () => {
     return (
         <div>
@@ -26,22 +29,22 @@ const Home = () => {
         />
         <Carousel.Caption >
           <div class="car-slide">
-          <h3 >M3</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3 > BMW M3</h3>
+          <p>Fast</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={m42}
+          src={typeR}
           alt="Second slide"
         />
 
         <Carousel.Caption>
         <div class="car-slide">
-          <h3>M4</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>Honda Type R</h3>
+          <p>Fast</p>
         </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -54,9 +57,9 @@ const Home = () => {
 
         <Carousel.Caption>
         <div class="car-slide">
-          <h3>M4</h3>
+          <h3>BMW M4</h3>
           <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          Fast
           </p>
         </div>
         </Carousel.Caption>
@@ -64,15 +67,22 @@ const Home = () => {
       </Carousel.Item>
     </Carousel>
 </main>
+      <div className="front-page">
+        <h2>Constuso</h2>
+        <h3>#1 - Online Auto Dealership on the Internet</h3>
+      </div>
       <Container fluid >
               <Row>
                 <Col>
                 <Figure>
       <Figure.Image
-        width={300}
+
+        
+        src={hondaLogo}  
+    
+        width={400}
         height={180}
         alt="171x180"
-        src={bmwLogo}
       />
     </Figure>
                 </Col>
@@ -86,10 +96,18 @@ const Home = () => {
                 </Col>
                 <Col>
                 <Figure.Image
+        width={320}
+        height={180}
+        alt="171x180"
+        src={toyotaLogo}
+      />
+                </Col>
+                <Col>
+                <Figure.Image
         width={300}
         height={180}
         alt="171x180"
-        src={bmwLogo}
+        src={porscheLogo}
       />
                 </Col>
               </Row>
