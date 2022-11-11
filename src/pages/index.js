@@ -9,6 +9,7 @@ import m3 from './images/m3.png';
 import m4 from './images/m3.png';
 import m42 from './images/m42.webp';
 import bmwLogo from './images/BMW.png';
+import NavbarComponent from "./components/NavBar1";
 const Home = () => {
     return (
         <div>

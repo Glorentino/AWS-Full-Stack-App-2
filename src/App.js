@@ -10,36 +10,53 @@ import Market from "./pages/market";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Profile from "./pages/profile";
+import Cancel from "./pages/Cancel";
+import Success from "./pages/Success";
+import NavbarComponent from "./pages/components/NavBar1";
+import { Modal } from "react-bootstrap";
+import { useState, useContext } from "react";
+import { CartContext } from './CarContext';
+import CartProduct from "./pages/components/CartProduct";
 import {
   Button,
   View,
   withAuthenticator,
 } from '@aws-amplify/ui-react';
-
+import CartProvider from "./CarContext";
 
 const App = ({ signOut, user }) => {
+  const cart = useContext(CartContext);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const productsCount = cart.items.reduce((sum, product) => sum + product.quantity, 0);
 
 
   return (
     <View >
 
       <body>
+        <CartProvider>
           <Navbar bg="dark" variant="dark">
             <Container>
               <Navbar.Brand href="/" >Home</Navbar.Brand>
               <Navbar.Brand href="/market">Market</Navbar.Brand>
               <Navbar.Brand href="/notes">Notes</Navbar.Brand>
               
-
-              <DropdownButton id="dropdown-item-button" >
+              <DropdownButton id="dropdown-item-button" title="-">
               <Dropdown.ItemText>{user.username}</Dropdown.ItemText>
               <Dropdown.Item as="button"><Navbar.Brand href="/profile">Profile</Navbar.Brand></Dropdown.Item>
               <Dropdown.Item as="button">Setting</Dropdown.Item>
               <Dropdown.Item as="button" onClick={signOut}> Sign Out</Dropdown.Item>
               </DropdownButton>
+              <NavbarComponent />
+              
             </Container>
-
+            
           </Navbar>
+
+
           <Router>
 
               <Routes>
@@ -47,8 +64,11 @@ const App = ({ signOut, user }) => {
                   <Route  exact path='/market' element={<Market/>} />
                   <Route  exact path='/notes' element={<Note/>} />
                   <Route  exact path='/profile' element={<Profile/>} />
+                  <Route  exact path='/success' element={<Success/>} />
+                  <Route  exact path='/cancel' element={<Cancel/>} />
               </Routes>
           </Router>
+          </CartProvider>
         <main>
         
 
